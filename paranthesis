@@ -1,0 +1,30 @@
+exp = "(a+b)*(c-(d/e))"
+
+s = []
+ok = True
+
+for ch in exp:
+    if ch == '(' or ch == '[' or ch == '{':
+        s.append(ch)
+    elif ch == ')' or ch == ']' or ch == '}':
+        if len(s) == 0:
+            ok = False
+            break
+        t = s.pop()
+        if ch == ')' and t != '(':
+            ok = False
+            break
+        if ch == ']' and t != '[':
+            ok = False
+            break
+        if ch == '}' and t != '{':
+            ok = False
+            break
+
+if len(s) != 0:
+    ok = False
+
+if ok:
+    print("Balanced")
+else:
+    print("Not Balanced")
